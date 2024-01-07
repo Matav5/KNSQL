@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Display</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Výpis dat</h2>
+
+    <table>
+        <tr>
+            <th>Název</th>
+            <th>Typ akce</th>
+            <th>Průmerný čas do akce</th>
+            <th>Nejčastější HTML interakce </th>
+        </tr>
+        <!--
+
+             "_id": 1,
+                        "count": 1,
+                        "avgTimestamp": 1,
+                        "mostFrequentIds":
+
+        -->
+        <!-- Vypsat podle typu eventu a vypsat počet, na jaké prvky (od nejčastějších), průměrný čas kliku-->
+            {% for item in events %}
+            <tr>
+                <td>{{ item }}</td>
+                <td>{{ events[item]["id"] }}</td>
+                <td>{{ events[item]["avgTimestamp"] }}</td>
+                <td>{{ events[item]["mostFrequentIds"] }}</td>
+            </tr>
+            {% endfor %}
+           
+        <!-- Repeat the above structure for other attributes -->
+
+    </table>
+
+</body>
+</html>

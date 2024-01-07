@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="DdSfU1mM7zhYH8M7QkpB8ZgWbtPOH6Pvp4Wwc7io">
+        <link rel="icon" href="https://eduvr.cz/favicon.ico">
+
+        
+        <link href="https://eduvr.cz/css/app.css" rel="stylesheet">
+
+        <title>Home | EduVR</title>
+<meta name="description"
+    content="Projekt pocházející od žáků, který má vzdělávat další žáky v ruzných oblastech a připravit je na praktickou výuku. Tento projekt cílí na osvojení dovedností spíše než na získání vědomostí.">
+<meta property="og:title" content="Home | EduVR">
+<meta property="og:image" content="https://eduvr.cz/images/image01.jpg">
+
+        <meta name="og:url" content="https://www.eduvr.cz/">
+        <meta property="og:site_name" content="EduVR">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="EduVR">
+        <meta name="keywords" content="Eduvr, moduly, škola, virtuální realita, eduvr, elektrikář, odpady">
+            </head>
+
+    <body>
+        <div id="app" class="d-flex flex-column min-vh-100">
+
+            <nav class="navigation">
+                <div class="navbar-toggle recorded" id="menubtn">
+                    <i class=" fa fa-bars" aria-hidden="true"></i>
+                    <h5>Menu</h5>
+                </div>
+
+
+                <ul class="links">
+                    <li class="nav-link recorded" id="domu"><a href="https://eduvr.cz">Domů</a></li>
+                    <li class="nav-link recorded" id="blog"><a href="BLOG">Blog</a></li>
+                    <li class="nav-link recorded" id="moduly"><a href="https://eduvr.cz/modules">Moduly</a></li>
+                                            <li class="nav-link"><a href="/leaderboard">Žebříček Soutěže</a></li>
+                                      <!--  <li class="nav-link"><a href="/blog">Články</a></li> -->
+                    <li class="nav-link recorded" id="jak na to"><a href="https://eduvr.cz/howto">Jak na to?</a></li>
+                    <li class="nav-link recorded" id="hardware "><a href="https://eduvr.cz/hardware">Hardware</a></li>
+
+                    
+                    <!-- For phones -->
+                    <div class="d-md-none">
+                        <!-- For logged in admins on phones-->
+                        
+                        <div class="dropdown-divider d-lg-none my-2"></div>
+
+                    </div>
+
+                                            <li class="nav-link log-in-out"><a id="prihlaseni" class="button button-white recorded"
+                                href="https://eduvr.cz/login">Přihlášení</a></li>
+                    
+                </ul>
+            </nav>
+
+
+            <main id="app-main" class="p-none m-none">
+                                <div id="landing">
+    <div class="col-12">
+            </div>
+    <section id="hero">
+
+        <div class="wrapper">
+            <div class="text">
+                <h1>Virtuální realita <br class="d-none d-lg-block"> pro školy</h1>
+
+                <div class="buttons">
+                    <a href="#info-cards" class="button button-green recorded" id="zobrazit vice">Zobrazit více</a>
+
+                                        <a href="https://eduvr.cz/login" class="button button-white recorded" id="prihlaseni">Přihlášení</a>
+                    
+                </div>
+            </div>
+
+            <div class="polygon">
+                <img src="https://eduvr.cz/images/landing/woman.webp" id="lady" class="recorded">
+            </div>
+        </div>
+
+
+    </section>
+
+        <section id="competition">
+        <div class="wrapper">
+            <div class="comp-row">
+                <div class="content">
+                    <div class="content-text">
+                        <h1 class="title">CzechSkillsVR: Protřepat - namíchat! - FINÁLE</h1>
+                        <p class="date"><h5>Tréninkové přihlašovací kolo:</h5> 09.05.2023 - 05.04.2023 </p>
+                        <p class="date"><h5>Postupové kolo:</h5> 11.04.2023 - 20.04.2023</p>
+
+                        <!--  <p class="description">Vyhrajte zdarma headset a modul dle vlastního výběru. Lorem ipsum dolor sit
+                            amet, consectetur adipiscing elit.</p>-->
+                    </div>
+                    <div class="content-button">
+                        <a class="button button-white recorded" href="/competition" id="souteze">Více informací</a>
+                    </div>
+                </div>
+                <div class="image recorded">
+                    <img src="https://eduvr.cz/images/painter.png" alt="" id="malir">
+                </div>
+            </div>
+            <div class="comp-row partners">
+                <div class="partners" style="opacity: .75;">
+                    <p class="text-white"style="margin-bottom: 0.25rem;">Pořadatel:</p>
+                    <img src="https://eduvr.cz/images/czech_skills_vr_logo_white.png" style="border-radius: 50%;" class="img-fluid recorded" id="poradatel" >
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="wrapper">
+
+            <div class="polygon">
+                <img class="recorded" id="headset" src="https://eduvr.cz/images/landing/oculus.webp">
+            </div>
+
+            <div class="text">
+                <h1>EduVR</h1>
+                <p>Projekt od žáků pro žáky, který má vzdělávat v různých oblastech a připravit je na praktickou výuku.
+                    Tento projekt cílí na osvojení dovedností spíše než na získání vědomostí.</p>
+                <p>Projektem EduVR chceme zábavnou formou vzbudit zájem žáků o technické učební obory a to nejen na
+                    učilištích,
+                    ale také na základních školách. Právě zde vidíme ten základní a velký personální potenciál.</p>
+            </div>
+
+        </div>
+
+
+
+
+    </section>
+    <section id="info-cards">
+        <div class="cards">
+            <div class="cards-item">
+                <img src="https://eduvr.cz/images/landing/lightbulb.svg">
+                <div class="text">
+                    <h4>Inovativní</h4>
+                    <p>Využíváme nejmodernější digitální technologie. Cílem je přivést žáky a učitele blíže a
+                        zatraktivnit výuku.</p>
+                    <p>Reagujeme na situaci Průmysl 4.0.</p>
+                </div>
+
+            </div>
+            <div class="cards-item">
+                <img src="https://eduvr.cz/images/landing/goals.svg">
+                <div class="text">
+                    <h4>Cíle</h4>
+                    <p>EduVR si klade za cíl zatraktivnit obory s klesajícím zájmem žáků, ušetřit školám finance na
+                        další projekty a zejména oslovit žáky již na základních školách.
+                    </p>
+                </div>
+            </div>
+            <div class="cards-item">
+                <img src="https://eduvr.cz/images/landing/flexible.svg">
+                <div class="text">
+                    <h4>Flexibilní</h4>
+                    <p>EduVR je vyvíjen modulárně, aby mohly jednotlivé části na základě komunikace rychleji reagovat na
+                        podněty.</p>
+                    <p>Projekt je pro vyšší zodpovědnost zastoupen učiteli.</p>
+                </div>
+            </div>
+        </div>
+
+        <!--<a href="#" class="button button-green">Zobrazit více</a>-->
+    </section>
+
+    <section id="module-cards">
+
+        <h1>Moduly</h1>
+
+        <div class="wrapper">
+
+            <div class="cards">
+
+                <div class="cards-item">
+                    <h4>Třídění odpadu</h4>
+                    <p>VR Modul Třídění odpadu žáka naučí, do jaké popelnice jaký odpad patří.</p>
+                    <a href="https://eduvr.cz/module/3"
+                        class="button button-green">Zobrazit více</a>
+                </div>
+                <div class="cards-item">
+                    <h4>Šroubování</h4>
+                    <p>VR modul Šroubování žáka naučí základnímu zacházení se šroubováky.</p>
+                    <a href="https://eduvr.cz/module/2"
+                        class="button button-green">Zobrazit více</a>
+                </div>
+                <div class="cards-item">
+                    <h4>Slaboproud</h4>
+                    <p>VR Modul Slaboproud žáka naučí zacházet se základními elektro součástkami.</p>
+                    <a href="https://eduvr.cz/module/1"
+                        class="button button-green">Zobrazit více</a>
+                </div>
+                <div class="cards-item">
+                    <h4>Chemie</h4>
+                    <p>Ve VR modulu Chemie si žák osvojí znalost periodické tabulky prvků. </p>
+                    <a href="https://eduvr.cz/module/6"
+                        class="button button-green">Zobrazit více</a>
+                </div>
+            </div>
+
+
+            <div class="polygon">
+                <img src="https://eduvr.cz/images/landing/boy.webp" id="boy">
+            </div>
+
+        </div>
+    </section>
+
+            <section id="form">
+    <h1>Máte zájem o tento způsob výuky?</h1>
+        <form  action="https://eduvr.cz" method="post">
+            <p>Jste-li zástupcem školy, zanechte nám svůj Email a IČO a my Vás kontaktujeme.</p>
+            <input type="hidden" name="_token" value="DdSfU1mM7zhYH8M7QkpB8ZgWbtPOH6Pvp4Wwc7io">                <div class="form-row">
+                    <div class="col col-md-8">
+                    <input type="email" name="email" class="form-control recorded" id="contactusemail" placeholder="@" value="" required>
+                                    </div>
+                <div class="col col-md-4">
+                <input type="text" class="form-control recorded" name="cin" id="cin" placeholder="IČO" minlength="8" maxlength="8" pattern="[0-9]+" value="" required>
+                                </div>
+            </div>
+            <div class="form-group">
+                <div class="col"><button type="submit" class="button button-green recorded" name="button" id="kontaktovan">Chci být kontaktován</button>
+                </div>
+            </div>
+        </form>
+</section>
+
+    
+</div>
+
+            </main>
+
+            <footer>
+                <div class="top">
+
+                    <div class="support">
+                        <p class="bold">Technická podpora</p>
+                        <div class="contact">
+                            <p>Všeobecné: eduvr@eduvr.cz</p>
+                            <p>Podpora: podpora@eduvr.cz</p>
+                        </div>
+                    </div>
+
+                    <div class="sales-department">
+                        <p class="bold">Obchodní oddělení</p>
+                        <div class="contact">
+                            <p>Svatoslav Ježek</p>
+                            <p>Tel.: +420 723 330 900</p>
+                            <p>Email: jezek@eduvr.cz</p>
+                        </div>
+                    </div>
+
+
+                    <ul class="menu">
+                        <p class="bold">Stránky</p>
+                        <li><a href="https://eduvr.cz">Domů</a></li>
+                        <li><a href="https://eduvr.cz/modules">Moduly</a></li>
+                       <!-- <li><a href="/blog">Články</a></li>-->
+                        <li><a href="https://eduvr.cz/howto">Jak na to</a></li>
+                        <li><a href="/hardware">Hardware</a></li>
+                                                <li><a href="/feedback">Zpětná vazba</a></li>
+                                            </ul>
+
+                    <div class="login">
+                                                    <a href="https://eduvr.cz/login" class="button button-white">Přihlášení</a>
+                                            </div>
+                </div>
+
+                <div class="bot">
+                    <p>Copyright &copy 2024 EduVR - Všechna práva vyhrazena</p>
+                </div>
+
+            </footer>
+        </div>
+
+        
+        <script src="https://eduvr.cz/js/app.js"></script>
+        <script src="https://eduvr.cz/js/cookieconsent.min.js"></script>
+
+        
+        <script>
+            window.CookieConsent.init({
+                modalMainTextMoreLink: null,
+                barTimeout: 500,
+                theme: {
+                    barColor: '#2C7CBF',
+                    barTextColor: '#FFF',
+                    barMainButtonColor: '#FFF',
+                    barMainButtonTextColor: '#2C7CBF',
+                    modalMainButtonColor: '#4285F4',
+                    modalMainButtonTextColor: '#FFF',
+                },
+                language: {
+                    current: 'cs',
+                    locale: {
+                        cs: {
+                            barMainText: 'Tento web používá soubory cookie, aby vám zajistil co nejlepší zážitek na našich webových stránek. ',
+                            barLinkSetting: 'Nastavení',
+                            barBtnAcceptAll: 'Přijmout vše',
+                            modalMainTitle: 'Nastavení',
+                            modalMainText: 'Cookie soubory jsou malá data odeslaná z webové stránky a uložená v počítači. Když si ze serveru vyžádáte stránku, váš prohlížeč odešle soubor cookie zpět na server. Soubory cookie byly navrženy tak, aby byly spolehlivým mechanismem, pomocí kterého si webové stránky zapamatují informace nebo zaznamenají aktivitu uživatele při prohlížení.',
+                            modalBtnSave: 'Uložit aktuální',
+                            modalBtnAcceptAll: 'Přijmout vše a zavřít',
+                            modalAffectedSolutions: 'Dotčená řešení:',
+                            learnMore: 'Zjistěte více',
+                            on: 'Zapnuto',
+                            off: 'Vypnuto',
+                        }
+                    }
+                },
+                categories: {
+                    necessary: {
+                        needed: true,
+                        checked: true,
+                        language: {
+                            locale: {
+                                cs: {
+                                    name: 'Nezbytně nutné soubory cookie ',
+                                    description: 'Nutné cookie soubory pro správný chod stránky.',
+                                }
+                            }
+                        }
+                    },
+                    thirdparty: {
+                        needed: false,
+                        checked: false,
+                        language: {
+                            locale: {
+                                cs: {
+                                    name: "Cookie soubory služeb a třetích stran",
+                                    description: 'Cookie soubory využívané třetími strany jako YouTube, Google, atd...'
+                                }
+                            }
+                        }
+                    }
+                },
+                services: {
+                    analytics: {
+                        category: 'thirdparty',
+                        type: 'dynamic-script',
+                        search: 'anylytics',
+                        cookies: [{
+                                name: '_gid',
+                                domain: `.${window.location.hostname}`
+                            },
+                            {
+                                name: /^_ga/,
+                                domain: `.${window.location.hostname}`
+                            }
+                        ],
+                        language: {
+                            locale: {
+                                cs: {
+                                    name: 'Google Analytika'
+                                }
+                            }
+                        }
+                    },
+                    youtube: {
+                        category: 'thirdparty',
+                        type: 'dynamic-script',
+                        search: 'youtube',
+                        cookies: [{
+                                name: 'VISITOR_INFO1_LIVE',
+                                domain: `.${window.location.hostname}`
+                            },
+                            {
+                                name: /^yt-/,
+                                domain: `.${window.location.hostname}`
+                            }
+                        ],
+                        language: {
+                            locale: {
+                                cs: {
+                                    name: 'YouTube'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+        </script>
+
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
+
+        <!-- TinyMCE -->
+        <script src="https://eduvr.cz/tinymce/jquery.tinymce.min.js"></script>
+        <script src="https://eduvr.cz/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript">
+            window.dataLayer = window.dataLayer || [];
+
+            $('.navbar-toggle').click(function() {
+                $('.links').toggleClass("active");
+            });
+
+            // Nastavení použité pro TinyMCE 5.7.1
+            tinymce.init({
+
+                selector: 'textarea.tiny-editor',
+                language: 'cs',
+                toolbar_mode: 'sliding',
+                relative_urls: false,
+                height: 350,
+
+                // Doporučené, vypíná převod české diakritiky na entity, šetří místo v tabulce, chceme text formátovat do html tagů
+                entities: '160,nbsp',
+                entity_encoding: 'named',
+
+                // Doporučené
+                plugins: [
+                    "advlist autolink lists link image charmap print preview anchor",
+                    "searchreplace visualblocks code fullscreen",
+                    "insertdatetime media table paste imagetools"
+                ],
+
+                // Doporučené
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+
+                browser_spellchecker: true,
+                image_title: true,
+                automatic_uploads: true,
+                images_upload_url: '/upload',
+                file_picker_types: 'image',
+
+                file_picker_callback: function(cb, value, meta) {
+                    var input = document.createElement('input');
+                    input.setAttribute('type', 'file');
+                    input.setAttribute('accept', 'image/*');
+                    input.onchange = function() {
+                        var file = this.files[0];
+
+                        var reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = function() {
+                            var id = 'blobid' + (new Date()).getTime();
+                            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                            var base64 = reader.result.split(',')[1];
+                            var blobInfo = blobCache.create(id, file, base64);
+                            blobCache.add(blobInfo);
+                            cb(blobInfo.blobUri(), {
+                                title: file.name
+                            });
+                        };
+                    };
+
+                    input.click();
+                }
+
+            });
+        </script>
+        </body>
+
+
+
+        <script>
+
+            var events = [];
+            events.push()
+            function recordEvent(event) {
+                if(event == undefined || event == null)
+                    return;
+               // console.log(event);
+
+                let jsonObj = {};
+                jsonObj.id = event.target.id;
+                jsonObj.type = event.type;
+                jsonObj.timeStamp = event.timeStamp;
+                console.log(jsonObj);
+                let str = JSON.stringify(stringify_object(event,2));
+                jsonObj = JSON.parse(str);
+                jsonObj.target = stringify_object(event.target,2);
+      
+                $.ajax({url:"/event",method:"post",data:str, contentType:"application/json;charset=UTF-8",dataType: "json"});
+        
+            }
+        
+                $(document).ready(function() {
+                    recordEvent({type:"pageLoad",timeStamp:Date.now(), width: window.innerWidth, height: window.innerHeight})
+                    // Add event listeners to all elements
+                    $('.recorded').click(recordEvent);
+                    $('.recorded').keydown(recordEvent);
+                    $('.recorded').mouseenter(recordEvent);
+                    //$('*').mousemove(recordEvent);
+                    $('.recorded').mouseleave(recordEvent);
+                    // Add more event types as needed
+                });
+                function stringifyEvent(e) {
+                    const obj = {};
+                    for (let k in e) {
+                      obj[k] = e[k];
+                    }
+                    return JSON.stringify(obj, (k, v) => {
+                      if (v instanceof Node) return 'Node';
+                      if (v instanceof Window) return 'Window';
+                      return v;
+                    }, ' ');
+                  }
+    
+                   function pathToSelector(node) {
+                    if (!node || !node.outerHTML) {
+                      return null;
+                    }
+                  
+                    var path;
+                    while (node.parentElement) {
+                      var name = node.localName;
+                      if (!name) break;
+                      name = name.toLowerCase();
+                      var parent = node.parentElement;
+                  
+                      var domSiblings = [];
+                  
+                      if (parent.children && parent.children.length > 0) {
+                        for (var i = 0; i < parent.children.length; i++) {
+                          var sibling = parent.children[i];
+                          if (sibling.localName && sibling.localName.toLowerCase) {
+                            if (sibling.localName.toLowerCase() === name) {
+                              domSiblings.push(sibling);
+                            }
+                          }
+                        }
+                      }
+                  
+                      if (domSiblings.length > 1) {
+                        name += ':eq(' + domSiblings.indexOf(node) + ')';
+                      }
+                      path = name + (path ? '>' + path : '');
+                      node = parent;
+                    }
+                  
+                    return path;
+                  };
+                  
+                function stringify_object(object, depth=0, max_depth=2) {
+                    // change max_depth to see more levels, for a touch event, 2 is good
+                    if (depth > max_depth)
+                        return 'Object';
+                
+                    const obj = {};
+                    for (let key in object) {
+                        let value = object[key];
+                        if (value instanceof Node)
+                            value = {id: value.id, nodeName: value.nodeName, nodeType: value.nodeType, innerText: value.innerText, outerHTML: value.outerHTML, innerHTML: value.innerHTML, className: value.className, classList: value.classList};
+                        else if (value instanceof Window)
+                            value = 'Window';
+                        else if (value instanceof Object){
+                            value = stringify_object(value, depth+1, max_depth);
+                        }
+                        if(value != "Object")
+                            obj[key] = value;
+                    }
+                
+                    return depth? obj: JSON.stringify(obj);
+                }
+            </script>
+        
+    </html>

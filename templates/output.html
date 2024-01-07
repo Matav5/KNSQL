@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Display</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Výpis dat</h2>
+
+    <table>
+        <tr>
+            <th>Název</th>
+            <th>Počet</th>
+            <th>Nejčastější hodnota</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Průměr</th>
+        </tr>
+            {% for item in data %}
+            <tr>
+                <td>{{ item }}</td>
+                <td>{{ data[item]["count"] }}</td>
+                <td>{{ data[item]["most_common"] }}</td>
+                <td>{{ data[item]["min"] }}</td>
+                <td>{{ data[item]["max"] }}</td>
+                <td>{{ data[item]["avg"] }}</td>
+            </tr>
+            {% endfor %}
+           
+        <!-- Repeat the above structure for other attributes -->
+
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaznamenávač</title>
+</head>
+<body>
+    <div>
+        <img class="recorded" id="obrazek" src="https://i.ytimg.com/an_webp/79HjztZJCJI/mqdefault_6s.webp?du=3000&sqp=CPaxz6wG&rs=AOn4CLDb2dCadVWE_fjNuv7UP8-dBvVf_Q" alt="">
+    </div>
+    <script src=" https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+
+    var events = [];
+    events.push()
+    function recordEvent(event) {
+        if(event == undefined || event == null)
+            return;
+       // console.log(event);
+        let jsonObj = {};
+        jsonObj.type = event.type;
+        jsonObj.event = JSON.stringify(event.originalEvent);
+        jsonObj.target = JSON.stringify(event.target);
+        jsonObj.timeStamp = event.timeStamp;
+        console.log(jsonObj);
+        let str = JSON.stringify(stringify_object(event,2));
+        jsonObj = JSON.parse(str);
+        console.log(str);
+      //  $.ajax({url:"/event",method:"post",data:str, contentType:"application/json;charset=UTF-8",dataType: "json"});
+
+    }
+
+        $(document).ready(function() {
+            // Add event listeners to all elements
+            $('.recorded').click(recordEvent);
+            $('.recorded').keydown(recordEvent);
+            $('.recorded').mouseenter(recordEvent);
+            //$('*').mousemove(recordEvent);
+            $('.recorded').mouseleave(recordEvent);
+            // Add more event types as needed
+        });
+
+        function stringify_object(object, depth=0, max_depth=2) {
+            // change max_depth to see more levels, for a touch event, 2 is good
+            if (depth > max_depth)
+                return 'Object';
+        
+            const obj = {};
+            for (let key in object) {
+                let value = object[key];
+                if (value instanceof Node)
+                    // specify which properties you want to see from the node
+                    value = {id: value.id, nodeName: value.nodeName, nodeType: value.nodeType};
+                else if (value instanceof Window)
+                    value = 'Window';
+                else if (value instanceof Object){
+                    value = stringify_object(value, depth+1, max_depth);
+                }
+                if(value != "Object")
+                    obj[key] = value;
+            }
+        
+            return depth? obj: JSON.stringify(obj);
+        }
+    </script>
+</body>
+</html>
