@@ -38,6 +38,8 @@
 
 
                 <ul class="links">
+                    <li class="nav-link recorded" id="clickInfo"><a href="/getEvent/type/click">Get info about clicks</a></li>
+                    <li class="nav-link recorded" id="allEventsInfo"><a href="/getEventInfo">Get Info about all events</a></li>
                     <li class="nav-link recorded" id="domu"><a href="https://eduvr.cz">Domů</a></li>
                     <li class="nav-link recorded" id="blog"><a href="BLOG">Blog</a></li>
                     <li class="nav-link recorded" id="moduly"><a href="https://eduvr.cz/modules">Moduly</a></li>
@@ -407,76 +409,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
         </script>
-
-        <!-- TinyMCE -->
-        <script src="https://eduvr.cz/tinymce/jquery.tinymce.min.js"></script>
-        <script src="https://eduvr.cz/tinymce/tinymce.min.js"></script>
-        <script type="text/javascript">
-            window.dataLayer = window.dataLayer || [];
-
-            $('.navbar-toggle').click(function() {
-                $('.links').toggleClass("active");
-            });
-
-            // Nastavení použité pro TinyMCE 5.7.1
-            tinymce.init({
-
-                selector: 'textarea.tiny-editor',
-                language: 'cs',
-                toolbar_mode: 'sliding',
-                relative_urls: false,
-                height: 350,
-
-                // Doporučené, vypíná převod české diakritiky na entity, šetří místo v tabulce, chceme text formátovat do html tagů
-                entities: '160,nbsp',
-                entity_encoding: 'named',
-
-                // Doporučené
-                plugins: [
-                    "advlist autolink lists link image charmap print preview anchor",
-                    "searchreplace visualblocks code fullscreen",
-                    "insertdatetime media table paste imagetools"
-                ],
-
-                // Doporučené
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-
-                browser_spellchecker: true,
-                image_title: true,
-                automatic_uploads: true,
-                images_upload_url: '/upload',
-                file_picker_types: 'image',
-
-                file_picker_callback: function(cb, value, meta) {
-                    var input = document.createElement('input');
-                    input.setAttribute('type', 'file');
-                    input.setAttribute('accept', 'image/*');
-                    input.onchange = function() {
-                        var file = this.files[0];
-
-                        var reader = new FileReader();
-                        reader.readAsDataURL(file);
-                        reader.onload = function() {
-                            var id = 'blobid' + (new Date()).getTime();
-                            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-                            var base64 = reader.result.split(',')[1];
-                            var blobInfo = blobCache.create(id, file, base64);
-                            blobCache.add(blobInfo);
-                            cb(blobInfo.blobUri(), {
-                                title: file.name
-                            });
-                        };
-                    };
-
-                    input.click();
-                }
-
-            });
-        </script>
         </body>
-
-
-
         <script>
 
             var events = [];
@@ -484,17 +417,21 @@
             function recordEvent(event) {
                 if(event == undefined || event == null)
                     return;
-               // console.log(event);
 
                 let jsonObj = {};
-                jsonObj.id = event.target.id;
-                jsonObj.type = event.type;
-                jsonObj.timeStamp = event.timeStamp;
-                console.log(jsonObj);
-                let str = JSON.stringify(stringify_object(event,2));
-                jsonObj = JSON.parse(str);
-                jsonObj.target = stringify_object(event.target,2);
-      
+                
+                if(event.type != "pageLoad"){
+                    jsonObj.id = event.target.id;
+                    jsonObj.type = event.type;
+                    jsonObj.timeStamp = event.timeStamp;
+                    let str = JSON.stringify(stringify_object(event,2));
+                    jsonObj = JSON.parse(str);
+                    jsonObj.target = stringify_object(event.target,2);
+                    let str = JSON.stringify(jsonObj);
+                }
+                else{
+                    let str = JSON.stringify(event);
+                }
                 $.ajax({url:"/event",method:"post",data:str, contentType:"application/json;charset=UTF-8",dataType: "json"});
         
             }
@@ -509,55 +446,9 @@
                     $('.recorded').mouseleave(recordEvent);
                     // Add more event types as needed
                 });
-                function stringifyEvent(e) {
-                    const obj = {};
-                    for (let k in e) {
-                      obj[k] = e[k];
-                    }
-                    return JSON.stringify(obj, (k, v) => {
-                      if (v instanceof Node) return 'Node';
-                      if (v instanceof Window) return 'Window';
-                      return v;
-                    }, ' ');
-                  }
-    
-                   function pathToSelector(node) {
-                    if (!node || !node.outerHTML) {
-                      return null;
-                    }
-                  
-                    var path;
-                    while (node.parentElement) {
-                      var name = node.localName;
-                      if (!name) break;
-                      name = name.toLowerCase();
-                      var parent = node.parentElement;
-                  
-                      var domSiblings = [];
-                  
-                      if (parent.children && parent.children.length > 0) {
-                        for (var i = 0; i < parent.children.length; i++) {
-                          var sibling = parent.children[i];
-                          if (sibling.localName && sibling.localName.toLowerCase) {
-                            if (sibling.localName.toLowerCase() === name) {
-                              domSiblings.push(sibling);
-                            }
-                          }
-                        }
-                      }
-                  
-                      if (domSiblings.length > 1) {
-                        name += ':eq(' + domSiblings.indexOf(node) + ')';
-                      }
-                      path = name + (path ? '>' + path : '');
-                      node = parent;
-                    }
-                  
-                    return path;
-                  };
-                  
+
                 function stringify_object(object, depth=0, max_depth=2) {
-                    // change max_depth to see more levels, for a touch event, 2 is good
+
                     if (depth > max_depth)
                         return 'Object';
                 
