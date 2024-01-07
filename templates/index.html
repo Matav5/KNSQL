@@ -43,7 +43,7 @@
                     <li class="nav-link recorded" id="domu"><a href="https://eduvr.cz">Domů</a></li>
                     <li class="nav-link recorded" id="blog"><a href="BLOG">Blog</a></li>
                     <li class="nav-link recorded" id="moduly"><a href="https://eduvr.cz/modules">Moduly</a></li>
-                                            <li class="nav-link"><a href="/leaderboard">Žebříček Soutěže</a></li>
+                    <li class="nav-link recorded" id="zebricek"><a href="/leaderboard">Žebříček Soutěže</a></li>
                                       <!--  <li class="nav-link"><a href="/blog">Články</a></li> -->
                     <li class="nav-link recorded" id="jak na to"><a href="https://eduvr.cz/howto">Jak na to?</a></li>
                     <li class="nav-link recorded" id="hardware "><a href="https://eduvr.cz/hardware">Hardware</a></li>
@@ -291,116 +291,10 @@
 
         
         <script src="https://eduvr.cz/js/app.js"></script>
-        <script src="https://eduvr.cz/js/cookieconsent.min.js"></script>
+
 
         
-        <script>
-            window.CookieConsent.init({
-                modalMainTextMoreLink: null,
-                barTimeout: 500,
-                theme: {
-                    barColor: '#2C7CBF',
-                    barTextColor: '#FFF',
-                    barMainButtonColor: '#FFF',
-                    barMainButtonTextColor: '#2C7CBF',
-                    modalMainButtonColor: '#4285F4',
-                    modalMainButtonTextColor: '#FFF',
-                },
-                language: {
-                    current: 'cs',
-                    locale: {
-                        cs: {
-                            barMainText: 'Tento web používá soubory cookie, aby vám zajistil co nejlepší zážitek na našich webových stránek. ',
-                            barLinkSetting: 'Nastavení',
-                            barBtnAcceptAll: 'Přijmout vše',
-                            modalMainTitle: 'Nastavení',
-                            modalMainText: 'Cookie soubory jsou malá data odeslaná z webové stránky a uložená v počítači. Když si ze serveru vyžádáte stránku, váš prohlížeč odešle soubor cookie zpět na server. Soubory cookie byly navrženy tak, aby byly spolehlivým mechanismem, pomocí kterého si webové stránky zapamatují informace nebo zaznamenají aktivitu uživatele při prohlížení.',
-                            modalBtnSave: 'Uložit aktuální',
-                            modalBtnAcceptAll: 'Přijmout vše a zavřít',
-                            modalAffectedSolutions: 'Dotčená řešení:',
-                            learnMore: 'Zjistěte více',
-                            on: 'Zapnuto',
-                            off: 'Vypnuto',
-                        }
-                    }
-                },
-                categories: {
-                    necessary: {
-                        needed: true,
-                        checked: true,
-                        language: {
-                            locale: {
-                                cs: {
-                                    name: 'Nezbytně nutné soubory cookie ',
-                                    description: 'Nutné cookie soubory pro správný chod stránky.',
-                                }
-                            }
-                        }
-                    },
-                    thirdparty: {
-                        needed: false,
-                        checked: false,
-                        language: {
-                            locale: {
-                                cs: {
-                                    name: "Cookie soubory služeb a třetích stran",
-                                    description: 'Cookie soubory využívané třetími strany jako YouTube, Google, atd...'
-                                }
-                            }
-                        }
-                    }
-                },
-                services: {
-                    analytics: {
-                        category: 'thirdparty',
-                        type: 'dynamic-script',
-                        search: 'anylytics',
-                        cookies: [{
-                                name: '_gid',
-                                domain: `.${window.location.hostname}`
-                            },
-                            {
-                                name: /^_ga/,
-                                domain: `.${window.location.hostname}`
-                            }
-                        ],
-                        language: {
-                            locale: {
-                                cs: {
-                                    name: 'Google Analytika'
-                                }
-                            }
-                        }
-                    },
-                    youtube: {
-                        category: 'thirdparty',
-                        type: 'dynamic-script',
-                        search: 'youtube',
-                        cookies: [{
-                                name: 'VISITOR_INFO1_LIVE',
-                                domain: `.${window.location.hostname}`
-                            },
-                            {
-                                name: /^yt-/,
-                                domain: `.${window.location.hostname}`
-                            }
-                        ],
-                        language: {
-                            locale: {
-                                cs: {
-                                    name: 'YouTube'
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        </script>
-
-        
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
                 integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
         </script>
@@ -417,20 +311,20 @@
             function recordEvent(event) {
                 if(event == undefined || event == null)
                     return;
-
+                let str;
                 let jsonObj = {};
-                
+                console.log(event);
                 if(event.type != "pageLoad"){
+                    str = JSON.stringify(stringify_object(event,2));
+                    jsonObj = JSON.parse(str);
                     jsonObj.id = event.target.id;
                     jsonObj.type = event.type;
                     jsonObj.timeStamp = event.timeStamp;
-                    let str = JSON.stringify(stringify_object(event,2));
-                    jsonObj = JSON.parse(str);
                     jsonObj.target = stringify_object(event.target,2);
-                    let str = JSON.stringify(jsonObj);
+                    str = JSON.stringify(jsonObj);
                 }
                 else{
-                    let str = JSON.stringify(event);
+                    str = JSON.stringify(event);
                 }
                 $.ajax({url:"/event",method:"post",data:str, contentType:"application/json;charset=UTF-8",dataType: "json"});
         
@@ -438,13 +332,11 @@
         
                 $(document).ready(function() {
                     recordEvent({type:"pageLoad",timeStamp:Date.now(), width: window.innerWidth, height: window.innerHeight})
-                    // Add event listeners to all elements
                     $('.recorded').click(recordEvent);
                     $('.recorded').keydown(recordEvent);
                     $('.recorded').mouseenter(recordEvent);
                     //$('*').mousemove(recordEvent);
                     $('.recorded').mouseleave(recordEvent);
-                    // Add more event types as needed
                 });
 
                 function stringify_object(object, depth=0, max_depth=2) {

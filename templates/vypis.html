@@ -30,7 +30,6 @@
 
     <table>
         <tr>
-            <th>Název</th>
             <th>Typ akce</th>
             <th>Průmerný čas do akce</th>
             <th>Nejčastější HTML interakce </th>
@@ -43,13 +42,17 @@
                         "mostFrequentIds":
 
         -->
-        <!-- Vypsat podle typu eventu a vypsat počet, na jaké prvky (od nejčastějších), průměrný čas kliku-->
             {% for item in events %}
             <tr>
-                <td>{{ item }}</td>
-                <td>{{ events[item]["id"] }}</td>
-                <td>{{ events[item]["avgTimestamp"] }}</td>
-                <td>{{ events[item]["mostFrequentIds"] }}</td>
+                <td>{{ item["_id"] }}</td>
+                <td>{{ item["avgTimestamp"] }}s</td>
+                <td>
+                    <ul>
+                        {% for frequentId in item["mostFrequentIds"] %}
+                            <li> {{ frequentId}}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
             </tr>
             {% endfor %}
            

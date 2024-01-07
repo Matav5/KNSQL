@@ -31,7 +31,7 @@ def get_event(column, value):
         cache_key = f"{column}:{value}"
         cached_data = redis_client.get(cache_key)
         if cached_data:
-            print("z Redisu")
+            print("From Redis")
             data = json.loads(cached_data)
         else:
             time.sleep(1)
@@ -42,8 +42,7 @@ def get_event(column, value):
             for document in response:
                 document['_id'] = str(document['_id'])
                 datas.append(document)
-            # Store the response in Redis
-            r = json.dumps(datas)
+
             info = getInterestingInfo(datas)
             data = info
             redis_client.set(cache_key, json.dumps(info),30)
@@ -54,16 +53,14 @@ def get_event(column, value):
         return "Value can't be empty"
 @app.route('/getEventInfo')
 def get_event_info():  
-    data = {}
+    data = []
     cache_key = "getInfo"
     cached_data = redis_client.get(cache_key)
     if cached_data:
-        print("z Redisu")
+        print("from Redis")
         data = json.loads(cached_data)
     else:
         time.sleep(1)
-        datas = []
-
         response = col.aggregate([ {"$group" : {
                         "_id": "$type",
                         "count": { "$sum": 1 },
@@ -79,13 +76,9 @@ def get_event_info():
                     }
                     }])
         for document in response:
-            datas.append(document)
-        # Store the response in Redis
-        r = json.dumps(datas)
-        
-       # redis_client.set(cache_key, json.dumps(info),30)
-    return datas
-    return render_template('output.html', data=data)
+            data.append(document)
+        redis_client.set(cache_key, json.dumps(data),30)
+    return render_template('vypis.html', events=data)
 
 
 
